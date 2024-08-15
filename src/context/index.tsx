@@ -20,6 +20,17 @@ createWeb3Modal({
   wagmiConfig: config,
   projectId,
   enableAnalytics: true, // Optional - defaults to your Cloud configuration
+  enableOnramp: true, // Optional - false as default
+  themeMode: "light", // By default - set to user system settings
+  themeVariables: {
+    "--w3m-font-family": "Verdana", // Base font family
+    // "--w3m-color-mix": "#0137b6", // The color that blends in with the default colors
+    // "--w3m-color-mix-strength": 60, // The percentage on how much "--w3m-color-mix" should blend in
+    // "--w3m-accent": "#feea35", // Color used for buttons, icons, labels, etc.
+    // "--w3m-font-size-master": "10px",
+    "--w3m-border-radius-master": "2px",
+    "--w3m-z-index": 1,
+  },
 });
 
 export default function AppKitProvider({
