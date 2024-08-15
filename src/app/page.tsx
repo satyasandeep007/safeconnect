@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useAccount } from "wagmi";
 import { useWeb3Modal } from "@web3modal/wagmi/react";
+import { ButtonAc } from "@/components/AcButton";
 
 const Home: React.FC = () => {
   const { isConnected } = useAccount();
@@ -39,15 +40,20 @@ const Home: React.FC = () => {
             />
             Buy Crypto
           </button>
-
-          <button
+          <ButtonAc
+            className="bg-black   text-white flex justify-center group/modal-btn"
             onClick={() => {
               open({ view: "Account" });
             }}
-            className={`${baseStyle} bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 flex items-center`}
           >
-            Swap
-          </button>
+            <span className="group-hover/modal-btn:translate-x-40 text-center transition duration-500">
+              Swap
+            </span>
+            <div className="-translate-x-40 group-hover/modal-btn:translate-x-0 flex items-center justify-center absolute inset-0 transition duration-500 text-white z-20">
+              ⇄
+            </div>
+          </ButtonAc>
+
           {!isConnected ? (
             <w3m-connect-button />
           ) : (
@@ -61,6 +67,15 @@ const Home: React.FC = () => {
       <h2 className="my-8 text-2xl font-bold leading-snug text-center">
         Examples
       </h2>
+
+      <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 space-x-0 md:space-x-4">
+        <button className="w-40 h-10 rounded-xl bg-black border  border-transparent text-white text-sm">
+          Join now
+        </button>
+        <button className="w-40 h-10 rounded-xl bg-white text-black border border-black  text-sm">
+          Signup
+        </button>
+      </div>
     </main>
   );
 };
