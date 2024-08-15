@@ -28,9 +28,9 @@ createWeb3Modal({
     // "--w3m-color-mix": "#0137b6", // The color that blends in with the default colors
     // "--w3m-color-mix-strength": 60, // The percentage on how much "--w3m-color-mix" should blend in
     // "--w3m-accent": "#feea35", // Color used for buttons, icons, labels, etc.
-    "--w3m-font-size-master": "10px",
-    "--w3m-border-radius-master": "2px",
-    "--w3m-z-index": 1,
+    // "--w3m-font-size-master": "10px",
+    // "--w3m-border-radius-master": "2px",
+    // "--w3m-z-index": 1,
   },
 });
 

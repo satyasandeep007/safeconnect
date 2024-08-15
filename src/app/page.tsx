@@ -61,6 +61,7 @@ const Home: React.FC = () => {
       <h2 className="my-8 text-2xl font-bold leading-snug text-center">
         Examples
       </h2>
+      <w3m-onramp-widget />
     </main>
   );
 };
