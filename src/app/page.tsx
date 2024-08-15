@@ -4,10 +4,13 @@ import Image from "next/image";
 import { useAccount } from "wagmi";
 import { useWeb3Modal } from "@web3modal/wagmi/react";
 import { ButtonAc } from "@/components/AcButton";
+import { useRouter } from "next/navigation";
 
 const Home: React.FC = () => {
   const { isConnected } = useAccount();
   const { open } = useWeb3Modal();
+  const router = useRouter();
+
   const baseStyle =
     "px-4 py-2 font-bold text-white rounded-lg transition-all duration-300 ease-in-out transform hover:-translate-y-1 active:translate-y-0 focus:outline-none";
 
@@ -25,6 +28,15 @@ const Home: React.FC = () => {
           <div className="text-xl font-bold text-black">Build the Internet</div>
         </div>
         <div className="flex items-center gap-x-2">
+          <button
+            className="w-40 h-10 rounded-xl bg-black border  border-transparent text-white text-sm"
+            onClick={() => router.push("/user/dashboard")}
+          >
+            Go to App
+          </button>
+          <button className="w-40 h-10 rounded-xl bg-white text-black border border-black  text-sm">
+            Login
+          </button>
           <button
             onClick={() => {
               open({ view: "OnRampProviders" });
@@ -67,15 +79,6 @@ const Home: React.FC = () => {
       <h2 className="my-8 text-2xl font-bold leading-snug text-center">
         Examples
       </h2>
-
-      <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 space-x-0 md:space-x-4">
-        <button className="w-40 h-10 rounded-xl bg-black border  border-transparent text-white text-sm">
-          Join now
-        </button>
-        <button className="w-40 h-10 rounded-xl bg-white text-black border border-black  text-sm">
-          Signup
-        </button>
-      </div>
     </main>
   );
 };
