@@ -5,8 +5,8 @@ import { motion } from "framer-motion";
 
 const Hero = ({ isConnected }: any) => {
   return (
-    <div className="max-w-7xl mx-auto w-full">
-      <section className="h-auto  px-2  md:px-0">
+    <div className="max-w-7xl mx-auto w-full h-[80vh]">
+      <section className="h-full">
         <motion.div
           initial={{ opacity: 0.0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -15,23 +15,18 @@ const Hero = ({ isConnected }: any) => {
             duration: 0.8,
             ease: "easeInOut",
           }}
-          className="relative flex flex-col gap-4 items-center justify-center px-4"
+          className="relative flex flex-col gap-4 items-center justify-center px-4 h-full"
         >
-          <div className="container items-center max-w-6xl px-8 mx-auto xl:px-5">
+          <div className="container items-center max-w-7xl px-8 mx-auto xl:px-5 flex h-full flex-col justify-center">
             <div className="flex flex-wrap items-center sm:-mx-3">
               <div className="w-full md:w-1/2 md:px-3">
                 <div className="w-full pb-6 space-y-6 font  sm:max-w-md lg:max-w-lg md:space-y-4 lg:space-y-8 xl:space-y-9 sm:pr-5 lg:pr-0 md:pb-0">
-                  <h1 className="text-5xl font-extrabold tracking-tight text-gray-900 sm:text-5xl md:text-5xl lg:text-5xl xl:text-5xl">
-                    <span className="block xl:inline">
-                      Unifying Wallets and Swaps for a Smarter Future.
-                    </span>
-                  </h1>
-                  <p className="mx-auto text-base text-gray-500 sm:max-w-md font-light lg:text-2xl md:max-w-3xl">
+                  <p className="w-[550px] text-6xl font-semibold text-left text-[#222] leading-snug">
+                    Bridging Realities through Cryptocurrency
+                  </p>
+                  <p className="mx-auto text-base text-gray-500 sm:max-w-md font-light lg:text-xl md:max-w-3xl">
                     Unlock seamless token swapping, wallet management, and
                     crypto on-ramping with {""}
-                    <span className="bg-orange-600 text-white p-1">
-                      1Connect
-                    </span>
                   </p>
 
                   <div className="relative flex flex-col sm:flex-row sm:space-x-4">
@@ -59,12 +54,53 @@ const Hero = ({ isConnected }: any) => {
                       </Link>
                     )}
                   </div>
+                  <div className="w-[534px] h-[69px] flex gap-10 pt-10">
+                    <div className="w-[156px] h-[69px] flex flex-col-reverse">
+                      <p className=" opacity-70 text-lg text-left text-[#222]">
+                        Cryptocurrencies
+                      </p>
+                      <p className=" text-[40px] font-bold text-left">
+                        <span className="text-[40px] font-bold text-left text-[#222]">
+                          650
+                        </span>
+                        <span className="text-[40px] font-bold text-left text-[#4eb680]">
+                          +
+                        </span>
+                      </p>
+                    </div>
+                    <div className="w-[125px] h-[69px]  flex flex-col-reverse">
+                      <p className=" opacity-70 text-lg text-left text-[#222]">
+                        Global Users
+                      </p>
+                      <p className="text-[40px] font-bold text-left  ">
+                        <span className="text-[40px] font-bold text-left text-[#222]">
+                          500K
+                        </span>
+                        <span className="text-[40px] font-bold text-left text-[#4eb680]">
+                          +
+                        </span>
+                      </p>
+                    </div>
+                    <div className="w-[161px] h-[69px] flex flex-col-reverse">
+                      <p className="opacity-70 text-lg text-left text-[#222]">
+                        Crypto Workshops
+                      </p>
+                      <p className=" text-[40px] font-bold text-left">
+                        <span className="text-[40px] font-bold text-left text-[#222]">
+                          1000
+                        </span>
+                        <span className="text-[40px] font-bold text-left text-[#4eb680]">
+                          +
+                        </span>
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
               <div className="w-full md:w-1/2">
                 <div className="w-full">
                   <Image
-                    src="/crypto.svg"
+                    src="/kk.png"
                     alt="nothing"
                     width={1000}
                     height={1000}
