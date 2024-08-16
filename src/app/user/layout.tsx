@@ -9,6 +9,7 @@ import {
   IconUserBolt,
   IconCurrencyEthereum,
   IconArrowsUpDown,
+  IconCopy,
 } from "@tabler/icons-react";
 import { useAccount, useDisconnect } from "wagmi";
 import { LogoIcon } from "@/components/Logo";
@@ -23,6 +24,7 @@ export default function RootLayout({
   const [open, setOpen] = useState(false);
   const { isConnected, address } = useAccount();
   const { disconnect } = useDisconnect();
+  const [tooltipVisible, setTooltipVisible] = useState(false);
 
   useEffect(() => {
     if (!isConnected) {
@@ -81,12 +83,38 @@ export default function RootLayout({
     },
   ];
 
+  const truncateAddress = (address: string) => {
+    return address ? `${address.slice(0, 6)}...${address.slice(-4)}` : "";
+  };
+
+  const copyToClipboard = () => {
+    if (address) {
+      navigator.clipboard.writeText(address);
+      setTooltipVisible(true);
+      setTimeout(() => setTooltipVisible(false), 2000);
+    }
+  };
+
   return (
     <div className="flex h-screen bg-gray-200">
       <Sidebar open={open} setOpen={setOpen}>
         <SidebarBody className="justify-between gap-10">
           <div className="flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
-            {open ? <div className="text-black">{address}</div> : <LogoIcon />}
+            <div className="text-black">
+              sep:{" "}
+              {isConnected ? truncateAddress(address || "") : "Not Connected"}
+              <button
+                onClick={copyToClipboard}
+                className="text-neutral-700 dark:text-neutral-200"
+              >
+                <IconCopy />
+              </button>
+              {tooltipVisible && (
+                <div className="absolute top-full mt-1 bg-black text-white p-1 rounded text-xs">
+                  Copied!
+                </div>
+              )}
+            </div>
             <div className="mt-8 flex flex-col gap-2">
               {links.map((link, idx) => (
                 <SidebarLink key={idx} link={link} />
