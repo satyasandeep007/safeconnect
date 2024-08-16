@@ -53,6 +53,27 @@ const Hero = ({ isConnected }: any) => {
                         </svg>
                       </Link>
                     )}
+                    <div className="flex gap-2 items-center">
+                      <svg
+                        width={64}
+                        height={64}
+                        viewBox="0 0 64 64"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="w-10 h-10"
+                        preserveAspectRatio="none"
+                      >
+                        <rect width={64} height={64} fill="#4EB680" />
+                        <path
+                          d="M45 32L25.5 43.2583V20.7417L45 32Z"
+                          fill="#222222"
+                        />
+                      </svg>
+                      <p className="opacity-60 text-normal font-thin text-left text-[#222]">
+                        Watch Video
+                      </p>
+                    </div>
+                    
                   </div>
                   <div className="w-[534px] h-[69px] flex gap-10 pt-10">
                     <div className="w-[156px] h-[69px] flex flex-col-reverse">
@@ -99,12 +120,7 @@ const Hero = ({ isConnected }: any) => {
               </div>
               <div className="w-full md:w-1/2">
                 <div className="w-full px-10">
-                  <Image
-                    src="/kk.png"
-                    alt="nothing"
-                    width={500}
-                    height={500}
-                  />
+                  <Image src="/kk.png" alt="nothing" width={500} height={500} />
                 </div>
               </div>
             </div>

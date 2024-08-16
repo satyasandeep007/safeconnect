@@ -26,6 +26,8 @@ createWeb3Modal({
   themeMode: "light",
   themeVariables: {
     "--w3m-font-family": "Epilogue",
+    "--w3m-accent": "#222",
+    "--w3m-border-radius-master": "0px",
   },
 });
 
