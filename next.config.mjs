@@ -4,7 +4,10 @@ const nextConfig = {
     domains: ["icoholder.com", "assets.aceternity.com"],
   },
   webpack: (config) => {
-    config.externals.push("pino-pretty", "lokijs", "encoding");
+    config.externals.push("pino-pretty", "lokijs", "encoding", {
+      test: /\.svg$/,
+      use: ["@svgr/webpack"],
+    });
     return config;
   },
 };

@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@svgr/webpack": "^8.1.0",
     "@tabler/icons-react": "^3.12.0",
     "@tanstack/react-query": "^5.51.23",
     "@web3modal/wagmi": "^5.0.11",
