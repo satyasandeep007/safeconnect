@@ -31,7 +31,7 @@ const Home: React.FC = () => {
           )}
         </div>
       </header>
-      <Hero />
+      <Hero isConnected={isConnected} />
     </main>
   );
 };
