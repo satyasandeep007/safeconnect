@@ -98,13 +98,12 @@ const Hero = ({ isConnected }: any) => {
                 </div>
               </div>
               <div className="w-full md:w-1/2">
-                <div className="w-full">
+                <div className="w-full px-10">
                   <Image
                     src="/kk.png"
                     alt="nothing"
-                    width={1000}
-                    height={1000}
-                    className=""
+                    width={500}
+                    height={500}
                   />
                 </div>
               </div>
