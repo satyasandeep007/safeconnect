@@ -2,12 +2,10 @@
 
 import Image from "next/image";
 import { useAccount } from "wagmi";
-import { useRouter } from "next/navigation";
 import Hero from "@/components/Hero";
 
 const Home: React.FC = () => {
   const { isConnected } = useAccount();
-  const router = useRouter();
 
   return (
     <main className="min-h-screen px-8 py-0 pb-12 flex-1 flex flex-col items-center">
