@@ -10,9 +10,9 @@ import {
   IconCurrencyEthereum,
   IconArrowsUpDown,
   IconCopy,
+  IconArrowsExchange,
 } from "@tabler/icons-react";
 import { useAccount, useDisconnect } from "wagmi";
-import { LogoIcon } from "@/components/Logo";
 import DashboardHeader from "@/components/Header";
 import { redirect } from "next/navigation";
 
@@ -43,6 +43,13 @@ export default function RootLayout({
       href: "/user/dashboard",
       icon: (
         <IconBrandTabler className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
+      ),
+    },
+    {
+      label: "Transactions",
+      href: "/user/transactions",
+      icon: (
+        <IconArrowsExchange className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
       ),
     },
     {
@@ -100,14 +107,15 @@ export default function RootLayout({
       <Sidebar open={open} setOpen={setOpen}>
         <SidebarBody className="justify-between gap-10">
           <div className="flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
-            <div className="text-black">
-              sep:{" "}
-              {isConnected ? truncateAddress(address || "") : "Not Connected"}
+            <div className="text-black flex items-center space-x-2">
+              <span className="text-sm">
+                {isConnected ? truncateAddress(address || "") : "Not Connected"}
+              </span>
               <button
                 onClick={copyToClipboard}
                 className="text-neutral-700 dark:text-neutral-200"
               >
-                <IconCopy />
+                <IconCopy className="h-4 w-4 text-gray-500" />
               </button>
               {tooltipVisible && (
                 <div className="absolute top-full mt-1 bg-black text-white p-1 rounded text-xs">
