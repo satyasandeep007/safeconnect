@@ -4,7 +4,7 @@ import { headers } from "next/headers";
 
 import { cookieToInitialState } from "wagmi";
 
-import { config } from "@/config";
+import { config } from "@/lib/wagmiConfig";
 import AppKitProvider from "@/app/providers";
 import { Loading } from "@/components/Loading";
 
