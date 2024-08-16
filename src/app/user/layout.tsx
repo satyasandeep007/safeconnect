@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Sidebar, SidebarBody, SidebarLink } from "@/components/Sidebar";
 import {
   IconArrowLeft,
@@ -10,10 +10,10 @@ import {
   IconCurrencyEthereum,
   IconArrowsUpDown,
 } from "@tabler/icons-react";
-import { cn } from "@/lib/utils";
 import { useAccount, useDisconnect } from "wagmi";
 import { LogoIcon } from "@/components/Logo";
 import DashboardHeader from "@/components/Header";
+import { redirect } from "next/navigation";
 
 export default function RootLayout({
   children,
@@ -23,6 +23,17 @@ export default function RootLayout({
   const [open, setOpen] = useState(false);
   const { isConnected, address } = useAccount();
   const { disconnect } = useDisconnect();
+
+  useEffect(() => {
+    if (!isConnected) {
+      redirect(`/`);
+    }
+  }, [isConnected]);
+
+  const handleDisconnect = () => {
+    disconnect();
+    redirect(`/`);
+  };
 
   const links = [
     {
@@ -63,7 +74,7 @@ export default function RootLayout({
     {
       label: "Logout",
       href: "#",
-      onClick: () => disconnect(),
+      onClick: () => handleDisconnect(),
       icon: (
         <IconArrowLeft className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
       ),
@@ -86,7 +97,7 @@ export default function RootLayout({
       </Sidebar>
 
       <div className="flex-1 flex flex-col">
-        <DashboardHeader /> {/* Always shows the header */}
+        <DashboardHeader />
         <main className="flex-1 p-6">{children}</main>
       </div>
     </div>

@@ -3,9 +3,17 @@
 import Image from "next/image";
 import { useAccount } from "wagmi";
 import Hero from "@/components/Hero";
+import { redirect } from "next/navigation";
+import { useEffect } from "react";
 
 const Home: React.FC = () => {
   const { isConnected } = useAccount();
+
+  useEffect(() => {
+    if (isConnected) {
+      redirect(`/user/dashboard`);
+    }
+  }, [isConnected]);
 
   return (
     <main className="min-h-screen px-8 py-0 pb-12 flex-1 flex flex-col items-center">
