@@ -27,8 +27,9 @@ export const config = defaultWagmiConfig({
   }),
   auth: {
     email: true, // default to true
-    socials: ["github", "google", "x", "discord", "apple"],
-    showWallets: true, // default to true
-    walletFeatures: true, // default to true
+    socials: ["github", "google"],
+    // showWallets: false, // default to true
+    walletFeatures: false, // default to true
+    
   },
 });

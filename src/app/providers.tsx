@@ -12,6 +12,12 @@ if (!projectId) throw new Error("Project ID is not defined");
 
 createWeb3Modal({
   metadata,
+  allWallets: "HIDE",
+  featuredWalletIds: [
+    "c57ca95b47569778a828d19178114f4db188b89b763c899ba0be274e97267d96",
+    "225affb176778569276e484e1b92637ad061b01e13a048b35a9d280c3b58970f"
+  ],
+
   wagmiConfig: config,
   projectId,
   enableAnalytics: true,
