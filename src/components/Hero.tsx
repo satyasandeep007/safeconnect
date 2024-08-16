@@ -5,8 +5,8 @@ import { motion } from "framer-motion";
 
 const Hero = ({ isConnected }: any) => {
   return (
-    <div className="h-screen mx-auto justify-center py-20">
-      <section className="h-auto  px-2 bg-white md:px-0">
+    <div className="max-w-7xl mx-auto w-full">
+      <section className="h-auto  px-2  md:px-0">
         <motion.div
           initial={{ opacity: 0.0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}

@@ -16,8 +16,8 @@ const Home: React.FC = () => {
   }, [isConnected]);
 
   return (
-    <main className="min-h-screen px-8 py-0 pb-12 flex-1 flex flex-col items-center">
-      <header className="w-full py-4 flex justify-between items-center">
+    <main className="h-screen bg-[#FCFAF6]">
+      <header className="max-w-7xl mx-auto w-full py-4 flex justify-between items-center">
         <div className="flex items-center">
           <Image
             src="/walletconnect.png"
