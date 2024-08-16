@@ -26,10 +26,10 @@ const Home: React.FC = () => {
           </span>
         </p>
         <div className="flex gap-6">
-          <p className="text-lg text-left text-[#222]">Features</p>
-          <p className="text-lg text-left text-[#222]">Programs</p>
-          <p className="text-lg text-left text-[#222]">Pricing</p>
-          <p className="text-lg text-left text-[#222]">Company</p>
+          <p className="text-normal font-light text-left text-[#222]">Features</p>
+          <p className="text-normal font-light text-left text-[#222]">Programs</p>
+          <p className="text-normal font-light text-left text-[#222]">Pricing</p>
+          <p className="text-normal font-light text-left text-[#222]">Company</p>
         </div>
         <div className="flex gap-2">
           <div className="flex justify-center  items-center">
