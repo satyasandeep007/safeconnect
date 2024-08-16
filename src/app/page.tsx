@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useAccount } from "wagmi";
 import { useRouter } from "next/navigation";
 import { SolidButton } from "@/components/Buttons";
+import Hero from "@/components/Hero";
 
 const Home: React.FC = () => {
   const { isConnected } = useAccount();
@@ -23,10 +24,6 @@ const Home: React.FC = () => {
           <div className="text-xl font-bold text-black">Build the Internet</div>
         </div>
         <div className="flex items-center gap-x-2">
-          <SolidButton onClick={() => router.push("/user/dashboard")}>
-            Go to App
-          </SolidButton>
-
           {!isConnected ? (
             <w3m-connect-button />
           ) : (
@@ -37,6 +34,7 @@ const Home: React.FC = () => {
           )}
         </div>
       </header>
+      <Hero />
     </main>
   );
 };
