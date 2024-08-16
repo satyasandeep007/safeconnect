@@ -1,7 +1,7 @@
 "use client";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import LoadingIcon from "@/assets/eth.svg"; // Adjust path as necessary
+import LoadingIcon from "@/assets/eth.svg";
 import Image from "next/image";
 
 const icon = {
@@ -48,7 +48,6 @@ export const Loading = ({ children }: any) => {
               fill: { duration: 2, ease: "easeInOut" },
             }}
           >
-            {/* <LoadingIcon className="w-full h-full" /> */}
             <Image
               src={LoadingIcon}
               width={100}
