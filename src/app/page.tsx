@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { useAccount } from "wagmi";
 import { useRouter } from "next/navigation";
-import { SolidButton } from "@/components/Buttons";
 import Hero from "@/components/Hero";
 
 const Home: React.FC = () => {
