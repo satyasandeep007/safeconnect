@@ -69,7 +69,7 @@ const Hero = ({ isConnected }: any) => {
                           fill="#222222"
                         />
                       </svg>
-                      <p className="opacity-60 text-normal font-thin text-left text-[#222]">
+                      <p className="opacity-60 text-normal font-light text-left text-[#222]">
                         Watch Video
                       </p>
                     </div>
