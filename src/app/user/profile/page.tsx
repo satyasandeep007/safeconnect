@@ -9,11 +9,11 @@ const UserProfile = () => {
         <div className="flex items-center space-x-4">
           {/* Profile Picture */}
           <div className="w-24 h-24 rounded-full overflow-hidden bg-gray-300 flex items-center justify-center">
-            <img
+            {/* <img
               src="/default-profile.png"
               alt="Profile Picture"
               className="w-full h-full object-cover"
-            />
+            /> */}
           </div>
           {/* Profile Information */}
           <div className="flex flex-col">
