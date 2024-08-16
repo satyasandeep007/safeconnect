@@ -13,6 +13,7 @@ import {
 import { cn } from "@/lib/utils";
 import { useAccount, useDisconnect } from "wagmi";
 import { LogoIcon } from "@/components/Logo";
+import DashboardHeader from "@/components/Header";
 
 export default function RootLayout({
   children,
@@ -20,7 +21,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const [open, setOpen] = useState(false);
-  const { isConnected } = useAccount();
+  const { isConnected, address } = useAccount();
   const { disconnect } = useDisconnect();
 
   const links = [
@@ -70,57 +71,24 @@ export default function RootLayout({
   ];
 
   return (
-    <html>
-      <body>
-        <div
-          className={cn(
-            "rounded-md flex flex-col md:flex-row bg-gray-200  w-full flex-1 max-w-screen mx-auto border border-neutral-200 overflow-hidden",
-            "h-screen"
-          )}
-        >
-          <Sidebar open={open} setOpen={setOpen}>
-            <SidebarBody className="justify-between gap-10">
-              <div className="flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
-                {open ? (
-                  <>
-                    {!isConnected ? (
-                      <w3m-connect-button />
-                    ) : (
-                      <>
-                        <w3m-account-button balance={"hide"} />
-                      </>
-                    )}
-                  </>
-                ) : (
-                  <LogoIcon />
-                )}
-                <div className="mt-8 flex flex-col gap-2">
-                  {links.map((link, idx) => (
-                    <SidebarLink key={idx} link={link} />
-                  ))}
-                </div>
-              </div>
-              <>
-                {open ? (
-                  <>
-                    {!isConnected ? (
-                      <w3m-connect-button />
-                    ) : (
-                      <>
-                        <w3m-account-button />
-                      </>
-                    )}
-                  </>
-                ) : (
-                  <LogoIcon />
-                )}
-              </>
-            </SidebarBody>
-          </Sidebar>
+    <div className="flex h-screen bg-gray-200">
+      <Sidebar open={open} setOpen={setOpen}>
+        <SidebarBody className="justify-between gap-10">
+          <div className="flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
+            {open ? <div className="text-black">{address}</div> : <LogoIcon />}
+            <div className="mt-8 flex flex-col gap-2">
+              {links.map((link, idx) => (
+                <SidebarLink key={idx} link={link} />
+              ))}
+            </div>
+          </div>
+        </SidebarBody>
+      </Sidebar>
 
-          <main className="flex-1 p-6">{children}</main>
-        </div>
-      </body>
-    </html>
+      <div className="flex-1 flex flex-col">
+        <DashboardHeader /> {/* Always shows the header */}
+        <main className="flex-1 p-6">{children}</main>
+      </div>
+    </div>
   );
 }
