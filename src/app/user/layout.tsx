@@ -1,6 +1,5 @@
-// app/layout.tsx
-
 "use client";
+
 import React, { useState } from "react";
 import { Sidebar, SidebarBody, SidebarLink } from "@/components/Sidebar";
 import {
@@ -12,7 +11,7 @@ import {
   IconArrowsUpDown,
 } from "@tabler/icons-react";
 import { cn } from "@/lib/utils";
-import { useAccount } from "wagmi";
+import { useAccount, useDisconnect } from "wagmi";
 import { LogoIcon } from "@/components/Logo";
 
 export default function RootLayout({
@@ -20,6 +19,10 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const [open, setOpen] = useState(false);
+  const { isConnected } = useAccount();
+  const { disconnect } = useDisconnect();
+
   const links = [
     {
       label: "Dashboard",
@@ -59,13 +62,12 @@ export default function RootLayout({
     {
       label: "Logout",
       href: "#",
+      onClick: () => disconnect(),
       icon: (
         <IconArrowLeft className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
       ),
     },
   ];
-  const [open, setOpen] = useState(false);
-  const { isConnected } = useAccount();
 
   return (
     <html>
@@ -98,22 +100,21 @@ export default function RootLayout({
                   ))}
                 </div>
               </div>
-              <div>
+              <>
                 {open ? (
                   <>
                     {!isConnected ? (
                       <w3m-connect-button />
                     ) : (
                       <>
-                        <w3m-network-button />
-                        <w3m-account-button balance={"show"} />
+                        <w3m-account-button />
                       </>
                     )}
                   </>
                 ) : (
                   <LogoIcon />
                 )}
-              </div>
+              </>
             </SidebarBody>
           </Sidebar>
 

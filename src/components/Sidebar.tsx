@@ -154,24 +154,24 @@ export const MobileSidebar = ({
     </>
   );
 };
-
-export const SidebarLink = ({
-  link,
-  className,
-  ...props
-}: {
-  link: Links;
-  className?: string;
-  props?: LinkProps;
-}) => {
+export const SidebarLink = ({ link, className, ...props }: any) => {
   const { open, animate } = useSidebar();
+
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+    if (link.onClick) {
+      e.preventDefault(); // Prevent default link behavior if onClick is present
+      link.onClick(); // Call the onClick method (e.g., logout)
+    }
+  };
+
   return (
     <Link
-      href={link.href}
+      href={link.href || "#"}
       className={cn(
-        "flex items-center justify-start gap-2  group/sidebar py-2",
+        "flex items-center justify-start gap-2 group/sidebar py-2",
         className
       )}
+      onClick={handleClick} // Attach handleClick for handling custom logic
       {...props}
     >
       {link.icon}
