@@ -18,7 +18,7 @@ const Home: React.FC = () => {
             className="mr-2"
             alt="logo"
           />
-          <div className="text-xl font-bold text-black">Build the Internet</div>
+          <div className="text-xl font-bold text-black">1Connect</div>
         </div>
         <div className="flex items-center gap-x-2">
           {!isConnected ? (

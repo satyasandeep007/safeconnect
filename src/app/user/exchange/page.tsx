@@ -6,6 +6,7 @@ import { AnimatedButton } from "@/components/Buttons";
 
 const Exchange = () => {
   const { open } = useWeb3Modal();
+
   return (
     <div>
       <div className="p-6">

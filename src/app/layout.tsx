@@ -5,7 +5,7 @@ import { headers } from "next/headers";
 import { cookieToInitialState } from "wagmi";
 
 import { config } from "@/config";
-import AppKitProvider from "@/context";
+import AppKitProvider from "@/app/providers";
 import { Loading } from "@/components/Loading";
 
 export const metadata: Metadata = {
