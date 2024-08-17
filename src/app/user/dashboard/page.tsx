@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import { useAccount } from "wagmi";
 import { useRouter } from "next/navigation";
 import { getCryptoMarketData, getNftsData } from "@/lib/api";
+import NftImage from "@/assets/nft.jpg";
+import Image from "next/image";
 
 type Coin = {
   id: string;
@@ -21,6 +23,7 @@ type NFT = {
   image_url: string;
   symbol: string;
   floor_price: number | null;
+  asset_platform_id: string;
 };
 
 const Dashboard = () => {
@@ -48,6 +51,8 @@ const Dashboard = () => {
       setLoading(true);
       try {
         const data = await getNftsData();
+        console.log(data, "data");
+
         setNfts(data);
       } catch (error) {
         console.error("Failed to fetch NFT data", error);
@@ -168,14 +173,17 @@ const Dashboard = () => {
               nfts?.map((nft) => (
                 <div
                   key={nft.id}
-                  className="bg-white dark:bg-gray-800 border border-[#C6EBDD] rounded-none"
+                  className="bg-white dark:bg-gray-800 border border-[#C6EBDD] rounded-md p-4"
                 >
                   <div className="flex items-center space-x-4">
-                    <img
-                      src={nft.image_url}
+                    <Image
+                      src={NftImage}
                       alt={nft.name}
-                      className="w-10 h-10"
+                      width={20}
+                      height={20}
+                      className="w-10 h-10 rounded-full"
                     />
+
                     <div>
                       <h2 className="text-lg font-semibold">{nft.name}</h2>
                       <p className="text-sm text-gray-500 dark:text-gray-400">
@@ -185,7 +193,7 @@ const Dashboard = () => {
                   </div>
                   <div className="mt-4">
                     <p className="text-sm text-gray-500 dark:text-gray-400">
-                      Floor Price: ${nft.floor_price?.toLocaleString() || "N/A"}
+                      Chain: {nft.asset_platform_id}
                     </p>
                   </div>
                 </div>
