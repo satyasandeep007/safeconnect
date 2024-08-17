@@ -1,4 +1,4 @@
-export const getSafeTransactions = async (chainId: string, address: string) => {
+export const getSafeTransactions = async (chainId: any, address: string) => {
   const url = `https://safe-client.safe.global/v1/chains/${chainId}/safes/${address}/transactions/history`;
   const response = await fetch(url);
 

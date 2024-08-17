@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { getSafeTransactions } from "@/lib/api";
 import TransactionCard from "@/components/TransactionCard";
+import { useAccount } from "wagmi";
 
 interface Transaction {
   transaction: {
@@ -26,16 +27,12 @@ const Transactions = () => {
   const [openTransaction, setOpenTransaction] = useState<number | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-  const chainId = "11155111";
-  const safeAddress = "0xE5D661626787d7aeAd7285e0aF6375E4CF3b77fb";
+  const { isConnected, address, chainId }: any = useAccount();
 
   useEffect(() => {
     const fetchTransactions = async () => {
       try {
-        const data: Transaction[] = await getSafeTransactions(
-          chainId,
-          safeAddress
-        );
+        const data: Transaction[] = await getSafeTransactions(chainId, address);
         setTransactions(data);
       } catch (error) {
         setError("Error fetching transactions. Please try again later.");
@@ -45,7 +42,7 @@ const Transactions = () => {
     };
 
     fetchTransactions();
-  }, [chainId, safeAddress]);
+  }, [chainId, address]);
 
   const toggleTransaction = (index: number) => {
     setOpenTransaction(openTransaction === index ? null : index);

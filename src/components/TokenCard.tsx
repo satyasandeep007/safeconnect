@@ -48,8 +48,6 @@ const TokenCard = ({ token, index }: any) => {
           </span>
           <div className="-translate-x-40 group-hover/modal-btn:translate-x-0 flex items-center justify-center absolute inset-0 transition duration-500 text-white z-20 dark:bg-white dark:text-black">
             $
-
-            
           </div>
         </AnimatedButton>
 

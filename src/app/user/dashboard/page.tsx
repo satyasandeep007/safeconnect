@@ -3,9 +3,16 @@
 import { useState, useEffect } from "react";
 import { useAccount } from "wagmi";
 import { useRouter } from "next/navigation";
-import { getCryptoMarketData, getNftsData } from "@/lib/api";
+import {
+  getCryptoMarketData,
+  getNftsData,
+  getSafeTransactions,
+} from "@/lib/api";
 import NftImage from "@/assets/nft.jpg";
 import Image from "next/image";
+import TransactionCard from "@/components/TransactionCard";
+import { AnimatedButton } from "@/components/Buttons";
+import { useWeb3Modal } from "@web3modal/wagmi/react";
 
 type Coin = {
   id: string;
@@ -27,12 +34,28 @@ type NFT = {
 };
 
 const Dashboard = () => {
-  const { isConnected, address, chain } = useAccount();
+  const { isConnected, address, chain, chainId }: any = useAccount();
   const [coins, setCoins] = useState<Coin[]>([]);
   const [nfts, setNfts] = useState<NFT[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [activeTab, setActiveTab] = useState<"coins" | "nfts">("coins");
   const router = useRouter();
+  const [transactions, setTransactions] = useState<any[]>([]);
+  const { open } = useWeb3Modal();
+
+  useEffect(() => {
+    const fetchTransactions = async () => {
+      try {
+        const data: any[] = await getSafeTransactions(chainId, address);
+        setTransactions(data);
+      } catch (error) {
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchTransactions();
+  }, [chainId, address]);
 
   useEffect(() => {
     const fetchMarketData = async () => {
@@ -97,28 +120,43 @@ const Dashboard = () => {
           <p className="text-gray-500 dark:text-gray-400">
             Address:{" "}
             <span className="font-mono bg-gray-100 dark:bg-gray-700 p-1 rounded">
-              {address?.slice(0, 6)}...{address?.slice(-4)}
+              {address?.slice(0, 8)}...{address?.slice(-6)}
             </span>
           </p>
-          <p className="text-gray-500 dark:text-gray-400">
-            isConnected: {String(isConnected)}
-          </p>
-          <p className="text-gray-500 dark:text-gray-400">
-            Chain: {chain?.name}
-          </p>
-          <p className="text-gray-500 dark:text-gray-400">Balance: $50,000</p>
+          <AnimatedButton
+            className="bg-[#222] text-white flex justify-center group/modal-btn mt-4 dark:bg-white dark:text-black rounded-none w-36 h-10"
+            onClick={() => open({ view: "OnRampProviders" })}
+            aria-label="Buy Crypto"
+          >
+            <span className="group-hover/modal-btn:translate-x-40 text-center transition duration-500">
+              Buy Crypto
+            </span>
+            <div className="-translate-x-40 group-hover/modal-btn:translate-x-0 flex items-center justify-center absolute inset-0 transition duration-500 text-white z-20 dark:bg-white dark:text-black">
+              $
+            </div>
+          </AnimatedButton>
+
+          <AnimatedButton
+            className="border border-[#222222] text-[#222] flex justify-center group/modal-btn mt-4 dark:bg-white dark:text-black rounded-none w-36 h-10"
+            onClick={() => open({ view: "Account" })}
+            aria-label="Swap"
+          >
+            <span className="group-hover/modal-btn:translate-x-40 text-center transition duration-500">
+              Swap
+            </span>
+            <div className="-translate-x-40 group-hover/modal-btn:translate-x-0 flex items-center justify-center absolute inset-0 transition duration-500 text-black z-20 dark:bg-white dark:text-black">
+              ⇄
+            </div>
+          </AnimatedButton>
         </div>
 
         <div className="bg-white dark:bg-gray-800 p-6 border border-[#C6EBDD]  rounded-none">
           <h2 className="text-xl font-medium mb-4">Recent Transactions</h2>
-          <ul className="space-y-2">
-            <li className="text-gray-600 dark:text-gray-400">
-              Sent 0.5 BTC - $30,000
-            </li>
-            <li className="text-gray-600 dark:text-gray-400">
-              Received 2.0 ETH - $6,000
-            </li>
-          </ul>
+          <div className="space-y-2">
+            {transactions.map((tx, index) => (
+              <TransactionCard tx={tx} index={index} key={index} />
+            ))}
+          </div>
         </div>
       </div>
 
