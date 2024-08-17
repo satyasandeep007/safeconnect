@@ -24,8 +24,8 @@
 
 ## 🚀 Get Started
 
-**GitHub Repo**: [Repo Link](https://github.com/satyasandeep007/AptoGram)  
-**YouTube Video**: [Demo Video](https://youtu.be/Ip7WzDVs3Is)
+**GitHub Repo**: [Repo Link](https://github.com/satyasandeep007/safeconnect)  
+**YouTube Video**: [Demo Video](https://www.youtube.com)
 
 ## 🛠️ Stack We Used
 
