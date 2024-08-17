@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useAccount } from "wagmi";
+import ThemeToggle from "./ThemeToggle";
 
 const DashboardHeader: React.FC = () => {
   const { isConnected } = useAccount();
@@ -18,6 +19,7 @@ const DashboardHeader: React.FC = () => {
         />
         <div className="text-xl font-bold text-black">1Connect</div>
       </div>
+      <ThemeToggle />
       <div className="flex items-center gap-x-2">
         {!isConnected ? (
           <w3m-connect-button />

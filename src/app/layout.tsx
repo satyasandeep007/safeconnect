@@ -7,6 +7,7 @@ import { cookieToInitialState } from "wagmi";
 import { config } from "@/lib/wagmiConfig";
 import AppKitProvider from "@/app/providers";
 import { Loading } from "@/components/Loading";
+import { ThemeProvider } from "./themeprovider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -29,9 +30,11 @@ export default function RootLayout({
       </head>
       <body>
         <Loading>
-          <AppKitProvider initialState={initialState}>
-            {children}
-          </AppKitProvider>
+          <ThemeProvider>
+            <AppKitProvider initialState={initialState}>
+              {children}
+            </AppKitProvider>
+          </ThemeProvider>
         </Loading>
       </body>
     </html>
