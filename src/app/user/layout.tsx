@@ -52,13 +52,7 @@ export default function RootLayout({
         <IconArrowsExchange className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
       ),
     },
-    {
-      label: "Profile",
-      href: "/user/profile",
-      icon: (
-        <IconUserBolt className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
-      ),
-    },
+
     {
       label: "Portfolio",
       href: "/user/portfolio",
@@ -66,13 +60,7 @@ export default function RootLayout({
         <IconCurrencyEthereum className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
       ),
     },
-    {
-      label: "Settings",
-      href: "/user/settings",
-      icon: (
-        <IconSettings className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
-      ),
-    },
+
     {
       label: "Exchange",
       href: "/user/exchange",
