@@ -83,8 +83,8 @@ const Dashboard = () => {
   );
 
   return (
-    <div className="p-6 space-y-8 dark:bg-gray-900 dark:text-white">
-      <h1 className="text-3xl font-semibold text-center">Dashboard</h1>
+    <div className="p-6 space-y-8  dark:bg-gray-900 dark:text-white max-w-7xl mx-auto">
+      <h1 className="text-3xl font-semibold text-left">Dashboard</h1>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div className="bg-white dark:bg-gray-800 p-6 shadow-lg rounded-lg">
@@ -127,7 +127,7 @@ const Dashboard = () => {
           <div className="text-center">Loading...</div>
         ) : activeTab === "coins" ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {coins.map((coin) => (
+            {coins?.map((coin) => (
               <div
                 key={coin.id}
                 onClick={() => router.push(`/user/dashboard/tokens/${coin.id}`)}

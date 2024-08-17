@@ -21,7 +21,7 @@ const Hero = ({ isConnected }: any) => {
           <div className="container items-center max-w-7xl px-8 mx-auto xl:px-5 flex h-full flex-col justify-center">
             <div className="flex flex-wrap items-center sm:-mx-3">
               <div className="w-full md:w-1/2 md:px-3">
-                <div className="w-full pb-6 space-y-6 font sm:max-w-md lg:max-w-lg md:space-y-4 lg:space-y-8 xl:space-y-9 sm:pr-5 lg:pr-0 md:pb-0">
+                <div className="w-full min-w-[600px] pb-6 space-y-6 font sm:max-w-md lg:max-w-lg md:space-y-4 lg:space-y-8 xl:space-y-9 sm:pr-5 lg:pr-0 md:pb-0">
                   <p className="text-6xl font-semibold text-left text-gray-900 dark:text-white leading-snug">
                     Bridging Realities through Cryptocurrency
                   </p>
