@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { getSafeCollectibles, getSafeTokens } from "@/lib/api";
+import TokenCard from "@/components/TokenCard";
 
 interface Token {
   tokenInfo: {
@@ -80,39 +81,7 @@ const PortfolioPage = () => {
             <div className="text-center text-gray-500">No tokens found</div>
           ) : (
             tokens.map((token, index) => (
-              <div
-                key={index}
-                className="flex justify-between items-center bg-gray-50 p-2 rounded-lg mb-2"
-              >
-                <div className="flex items-center space-x-4">
-                  <Image
-                    src={token.tokenInfo.logoUri}
-                    alt={token.tokenInfo.name}
-                    width={20}
-                    height={20}
-                    className="rounded-full"
-                  />
-                  <div>
-                    <div className="text-lg font-semibold">
-                      {token.tokenInfo.name}
-                    </div>
-                    <div className="text-sm text-gray-500">
-                      {token.tokenInfo.symbol}
-                    </div>
-                  </div>
-                </div>
-
-                <div className="text-right">
-                  <div className="text-lg font-semibold">
-                    ${parseFloat(token.fiatBalance).toFixed(2)}
-                  </div>
-                  <div className="text-sm text-gray-500">
-                    {parseFloat(token.balance) /
-                      Math.pow(10, token.tokenInfo.decimals)}{" "}
-                    {token.tokenInfo.symbol}
-                  </div>
-                </div>
-              </div>
+              <TokenCard token={token} index={index} key={index} />
             ))
           )}
         </div>
@@ -128,7 +97,6 @@ const PortfolioPage = () => {
                 key={index}
                 className="flex justify-between items-center bg-gray-50 p-2 rounded-lg mb-2"
               >
-                {/* Render NFT details here */}
                 <div className="text-lg font-semibold">NFT {index + 1}</div>
               </div>
             ))
