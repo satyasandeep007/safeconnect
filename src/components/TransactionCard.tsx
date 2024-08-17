@@ -16,7 +16,7 @@ const TransactionCard = ({
     <div>
       <div
         key={index}
-        className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-sm"
+        className="bg-white dark:bg-gray-800 border border-[#C6EBDD] dark:border-gray-700"
       >
         <div
           className="flex justify-between items-center p-4 cursor-pointer"
@@ -67,7 +67,7 @@ const TransactionCard = ({
 
         {/* Toggleable detailed view */}
         {openTransaction === index && (
-          <div className="bg-gray-50 dark:bg-gray-900 p-4 space-y-4">
+          <div className="bg-[#C6EBDD]/30 dark:bg-gray-900 p-4 space-y-4">
             {isTransfer && (
               <>
                 <div>
