@@ -73,8 +73,8 @@ const Dashboard = () => {
     <button
       className={`px-4 py-2 text-lg font-semibold ${
         activeTab === tab
-          ? "text-blue-500 border-b-4 border-blue-500 dark:text-blue-400 dark:border-blue-400"
-          : "text-gray-600 dark:text-gray-400"
+          ? "text-[#4EB680] border-b-4 border-[#4EB680] dark:text-[#4EB680] dark:border-[#4EB680]"
+          : "text-[#222222] dark:text-gray-400"
       }`}
       onClick={() => setActiveTab(tab)}
     >
@@ -83,11 +83,11 @@ const Dashboard = () => {
   );
 
   return (
-    <div className="p-6 space-y-8  dark:bg-gray-900 dark:text-white max-w-7xl mx-auto">
+    <div className="p-6 space-y-8   dark:bg-gray-900 dark:text-white max-w-7xl mx-auto">
       <h1 className="text-3xl font-semibold text-left">Dashboard</h1>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="bg-white dark:bg-gray-800 p-6 shadow-lg rounded-lg">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 ">
+        <div className="bg-white dark:bg-gray-800 p-6 border border-[#C6EBDD] rounded-none">
           <h2 className="text-xl font-medium mb-4">Account Overview</h2>
           <p className="text-gray-500 dark:text-gray-400">
             Address:{" "}
@@ -104,7 +104,7 @@ const Dashboard = () => {
           <p className="text-gray-500 dark:text-gray-400">Balance: $50,000</p>
         </div>
 
-        <div className="bg-white dark:bg-gray-800 p-6 shadow-lg rounded-lg">
+        <div className="bg-white dark:bg-gray-800 p-6 border border-[#C6EBDD]  rounded-none">
           <h2 className="text-xl font-medium mb-4">Recent Transactions</h2>
           <ul className="space-y-2">
             <li className="text-gray-600 dark:text-gray-400">
@@ -131,7 +131,7 @@ const Dashboard = () => {
               <div
                 key={coin.id}
                 onClick={() => router.push(`/user/dashboard/tokens/${coin.id}`)}
-                className="bg-white dark:bg-gray-800 border p-4 rounded-lg shadow-lg hover:cursor-pointer"
+                className="bg-white dark:bg-gray-800 border p-4 border-[#C6EBDD]  rounded-none hover:cursor-pointer"
               >
                 <div className="flex items-center space-x-4">
                   <img src={coin.image} alt={coin.name} className="w-10 h-10" />
@@ -164,11 +164,11 @@ const Dashboard = () => {
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {nfts.length > 0 ? (
-              nfts.map((nft) => (
+            {nfts?.length > 0 ? (
+              nfts?.map((nft) => (
                 <div
                   key={nft.id}
-                  className="bg-white dark:bg-gray-800 border p-4 rounded-lg shadow-lg"
+                  className="bg-white dark:bg-gray-800 border border-[#C6EBDD] rounded-none"
                 >
                   <div className="flex items-center space-x-4">
                     <img
