@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { useAccount } from "wagmi";
+import { useRouter } from "next/navigation"; // Import useRouter
+import { getCryptoMarketData, getNftsData } from "@/lib/api";
 
 type Coin = {
   id: string;
@@ -27,14 +29,13 @@ const Dashboard = () => {
   const [nfts, setNfts] = useState<NFT[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [activeTab, setActiveTab] = useState<"coins" | "nfts">("coins");
+  const router = useRouter(); // Initialize useRouter
 
   useEffect(() => {
     const fetchMarketData = async () => {
       try {
-        const response = await fetch(
-          "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=false"
-        );
-        const data = await response.json();
+        const data = await getCryptoMarketData();
+
         setCoins(data);
       } catch (error) {
         console.error("Failed to fetch market data", error);
@@ -45,10 +46,8 @@ const Dashboard = () => {
 
     const fetchTrendingNFTs = async () => {
       try {
-        const response = await fetch(
-          "https://api.coingecko.com/api/v3/nfts/list?per_page=10&page=1"
-        );
-        const data = await response.json();
+        const data = await getNftsData();
+
         setNfts(data);
       } catch (error) {
         console.error("Failed to fetch NFT data", error);
@@ -121,7 +120,8 @@ const Dashboard = () => {
             {coins.map((coin) => (
               <div
                 key={coin.id}
-                className="bg-white border p-4 rounded-lg shadow-lg"
+                onClick={() => router.push(`/user/dashboard/tokens/${coin.id}`)}
+                className="bg-white border p-4 rounded-lg shadow-lg hover:cursor-pointer"
               >
                 <div className="flex items-center space-x-4">
                   <img src={coin.image} alt={coin.name} className="w-10 h-10" />

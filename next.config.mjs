@@ -5,6 +5,7 @@ const nextConfig = {
       "icoholder.com",
       "assets.aceternity.com",
       "safe-transaction-assets.safe.global",
+      "coin-images.coingecko.com",
     ],
   },
   webpack: (config) => {
