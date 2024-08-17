@@ -71,7 +71,9 @@ const PortfolioPage = () => {
       <div className="mb-4 flex">
         <button
           className={`flex-1 py-2 px-4 text-lg ${
-            activeTab === "tokens" ? "bg-blue-500 text-white" : "bg-gray-200"
+            activeTab === "tokens"
+              ? "bg-[#4EB680] text-white"
+              : "bg-[#C6EBDD]/50"
           }`}
           onClick={() => setActiveTab("tokens")}
         >
@@ -79,7 +81,7 @@ const PortfolioPage = () => {
         </button>
         <button
           className={`flex-1 py-2 px-4 text-lg ${
-            activeTab === "nfts" ? "bg-blue-500 text-white" : "bg-gray-200"
+            activeTab === "nfts" ? "bg-[#4EB680] text-white" : "bg-[#C6EBDD]/50"
           }`}
           onClick={() => setActiveTab("nfts")}
         >
