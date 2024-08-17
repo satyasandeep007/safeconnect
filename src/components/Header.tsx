@@ -8,7 +8,7 @@ const DashboardHeader: React.FC = () => {
   const { isConnected } = useAccount();
 
   return (
-    <header className="w-full py-4 px-8 bg-white dark:bg-gray-900 flex justify-between items-center shadow-md">
+    <header className="w-full py-4 px-8 bg-[#FCFAF6] dark:bg-gray-900 flex justify-between items-center ">
       <div className="flex items-center">
         <Image
           src="/walletconnect.png"

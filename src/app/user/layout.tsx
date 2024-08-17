@@ -41,28 +41,28 @@ export default function RootLayout({
       label: "Dashboard",
       href: "/user/dashboard",
       icon: (
-        <IconBrandTabler className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
+        <IconBrandTabler className="text-[#222222] dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
       ),
     },
     {
       label: "Transactions",
       href: "/user/transactions",
       icon: (
-        <IconArrowsExchange className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
+        <IconArrowsExchange className="text-[#222222] dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
       ),
     },
     {
       label: "Portfolio",
       href: "/user/portfolio",
       icon: (
-        <IconCurrencyEthereum className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
+        <IconCurrencyEthereum className="text-[#222222] dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
       ),
     },
     {
       label: "Exchange",
       href: "/user/exchange",
       icon: (
-        <IconArrowsUpDown className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
+        <IconArrowsUpDown className="text-[#222222] dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
       ),
     },
     {
@@ -70,7 +70,7 @@ export default function RootLayout({
       href: "#",
       onClick: () => handleDisconnect(),
       icon: (
-        <IconArrowLeft className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
+        <IconArrowLeft className="text-[#222222] dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
       ),
     },
   ];
@@ -88,13 +88,13 @@ export default function RootLayout({
   };
 
   return (
-    <div className="flex h-screen bg-gray-200 dark:bg-gray-900">
+    <div className="flex h-screen bg-[#FCFAF6] dark:bg-gray-900">
       {" "}
       {/* Added dark mode support */}
       <Sidebar open={open} setOpen={setOpen}>
         <SidebarBody className="justify-between gap-10">
           <div className="flex flex-col flex-1 overflow-y-auto overflow-x-hidden relative">
-            <div className="text-black dark:text-white flex items-center space-x-2">
+            {/* <div className="text-black dark:text-white flex items-center space-x-2">
               <span className="text-sm">
                 {isConnected ? truncateAddress(address || "") : "Not Connected"}
               </span>
@@ -105,11 +105,11 @@ export default function RootLayout({
                 <IconCopy className="h-4 w-4" />
               </button>
               {tooltipVisible && (
-                <div className="absolute top-full mt-1 bg-black text-white p-1 rounded text-xs">
+                <div className="absolute top-full mt-1 bg-[#222222] text-white p-1 rounded text-xs">
                   Copied!
                 </div>
               )}
-            </div>
+            </div> */}
             <div className="mt-8 flex flex-col gap-2">
               {links.map((link, idx) => (
                 <SidebarLink key={idx} link={link} />

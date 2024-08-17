@@ -30,14 +30,6 @@ const Home: React.FC = () => {
           </p>{" "}
           {/* Added dark mode support */}
           <p className="text-normal font-light text-left text-[#222] dark:text-[#ccc]">
-            Programs
-          </p>{" "}
-          {/* Added dark mode support */}
-          <p className="text-normal font-light text-left text-[#222] dark:text-[#ccc]">
-            Pricing
-          </p>{" "}
-          {/* Added dark mode support */}
-          <p className="text-normal font-light text-left text-[#222] dark:text-[#ccc]">
             Company
           </p>{" "}
           {/* Added dark mode support */}
