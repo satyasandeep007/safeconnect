@@ -2,23 +2,37 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import BitcoinLogo from "@/assets/cryptos/bitcoin.png";
+import EthereumLogo from "@/assets/cryptos/ethereum.png";
+import USDTLogo from "@/assets/cryptos/tether.png";
+import inchLogo from "@/assets/cryptos/1inch.png";
+import BNBLogo from "@/assets/cryptos/bnb.png";
 
-// Supported Cryptos and their Logos
 const supportedCryptos = [
   {
     name: "Bitcoin",
     symbol: "BTC",
-    logo: "/path/to/bitcoin-logo.png",
+    logo: BitcoinLogo,
   },
   {
     name: "Ethereum",
     symbol: "ETH",
-    logo: "/path/to/ethereum-logo.png",
+    logo: EthereumLogo,
   },
   {
-    name: "USD Coin",
-    symbol: "USDC",
-    logo: "/path/to/usdc-logo.png",
+    name: "Tether",
+    symbol: "USDT",
+    logo: USDTLogo,
+  },
+  {
+    name: "Binance",
+    symbol: "BNB",
+    logo: BNBLogo,
+  },
+  {
+    name: "1inch",
+    symbol: "1INCH",
+    logo: inchLogo,
   },
 ];
 
@@ -29,12 +43,11 @@ const Exchange = () => {
 
   return (
     <div className="flex flex-col md:flex-row gap-6 p-6">
-      {/* Left Side: Information about Onramp */}
-      <div className="flex-1 bg-white p-6 shadow-xl rounded-lg max-w-md mx-auto bg-gradient-to-r from-blue-400 to-purple-500 transform hover:scale-105 transition-transform duration-500">
+      <div>
         <h1 className="text-4xl font-bold mb-4 text-gray-800">
           What is Onramp?
         </h1>
-        <p className="text-lg text-gray-100 mb-6">
+        <p className="text-lg mb-6 text-gray-800">
           Onramp allows you to easily convert fiat currency into cryptocurrency
           directly within the app. With Onramp, you can quickly buy popular
           digital assets and get started with your crypto journey seamlessly.
@@ -75,7 +88,6 @@ const Exchange = () => {
         </button>
       </div>
 
-      {/* Right Side: Onramp Widget and Swap Button */}
       <div className="flex-1 bg-white p-6 shadow-xl rounded-lg max-w-md mx-auto bg-gradient-to-r from-green-400 to-blue-500 transform hover:scale-105 transition-transform duration-500">
         <h1 className="text-2xl font-semibold mb-6 text-gray-800">On Ramp</h1>
         <w3m-onramp-widget aria-label="Onramp Widget" />
