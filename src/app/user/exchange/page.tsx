@@ -7,6 +7,7 @@ import EthereumLogo from "@/assets/cryptos/ethereum.png";
 import USDTLogo from "@/assets/cryptos/tether.png";
 import inchLogo from "@/assets/cryptos/1inch.png";
 import BNBLogo from "@/assets/cryptos/bnb.png";
+import CoinbaseLogo from "@/assets/coinbase-2.png";
 
 const supportedCryptos = [
   {
@@ -44,16 +45,27 @@ const Exchange = () => {
   return (
     <div className="flex flex-col md:flex-row gap-6 p-6">
       <div>
-        <h1 className="text-4xl font-bold mb-4 text-gray-800">
+        <h1 className="text-4xl font-bold mb-4 text-gray-800 bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent">
           What is Onramp?
         </h1>
         <p className="text-lg mb-6 text-gray-800">
-          Onramp allows you to easily convert fiat currency into cryptocurrency
-          directly within the app. With Onramp, you can quickly buy popular
-          digital assets and get started with your crypto journey seamlessly.
-          Enjoy a smooth and secure onboarding process without the hassle.
+          Onramp is designed to make your entry into the world of cryptocurrency
+          seamless and hassle-free. By allowing you to convert fiat currency
+          directly within the app, Onramp simplifies your experience, enabling
+          you to buy popular digital assets swiftly. With minimal KYC
+          requirements,{" "}
+          <span className="text-[#4eb680] font-semibold">Onramp</span> ensures a
+          smooth, secure, and quick onboarding process.
+          <br />
+          <br />
+          <span className="font-semibold text-[#0052cc]">Coinbase</span> Onramp
+          is a industry-leading platform that offers a streamlined user
+          experience with minimal KYC requirements. Its robust security and
+          intuitive interface make it easy to manage your crypto transactions
+          confidently.
         </p>
-        <h2 className="text-2xl font-semibold mb-4 text-gray-800">
+
+        <h2 className="text-2xl font-semibold mb-4 text-gray-800 bg-gradient-to-r from-yellow-400 to-red-500 bg-clip-text text-transparent">
           Supported Assets
         </h2>
         <div
@@ -88,10 +100,19 @@ const Exchange = () => {
         </button>
       </div>
 
-      <div className="flex-1 bg-white p-6 shadow-xl rounded-lg max-w-md mx-auto bg-gradient-to-r from-green-400 to-blue-500 transform hover:scale-105 transition-transform duration-500">
+      <div className="flex-1 bg-white p-6 shadow-custom rounded-lg max-w-md mx-auto border border-gray-200 h-[44vh] mt-12">
         <h1 className="text-2xl font-semibold mb-6 text-gray-800">On Ramp</h1>
         <w3m-onramp-widget aria-label="Onramp Widget" />
-        <span className="text-sm text-gray-600">Powered By Coinbase</span>
+        <div className="flex items-center space-x-2 mt-8">
+          <span className="text-sm text-gray-600">Powered by</span>
+          <Image
+            src={CoinbaseLogo}
+            width={100}
+            height={40}
+            alt="Coinbase"
+            className="object-contain"
+          />
+        </div>
       </div>
     </div>
   );
