@@ -11,7 +11,9 @@ const DashboardHeader: React.FC = () => {
       <div className="flex items-center">
         <p className="text-[26px] font-bold text-left uppercase">
           <span className="text-[#222] dark:text-white">Safe</span> {""}
-          <span className="text-[#4eb680]">Connect</span>
+          <span className="text-[#4eb680]">
+            {"{"}Connect{"}"}
+          </span>
         </p>
       </div>
       <div className="flex items-center gap-x-4">
