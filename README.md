@@ -8,9 +8,13 @@
 
 ## Demo
 
-### Home Page
+### Landing Page
 
 ![Home](public/Home.png)
+
+### Dashboard Page
+
+![Home](public/Dashboard.png)
 
 ### Exchange Page
 
