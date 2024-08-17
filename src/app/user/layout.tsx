@@ -5,8 +5,6 @@ import { Sidebar, SidebarBody, SidebarLink } from "@/components/Sidebar";
 import {
   IconArrowLeft,
   IconBrandTabler,
-  IconSettings,
-  IconUserBolt,
   IconCurrencyEthereum,
   IconArrowsUpDown,
   IconCopy,
@@ -14,7 +12,7 @@ import {
 } from "@tabler/icons-react";
 import { useAccount, useDisconnect } from "wagmi";
 import DashboardHeader from "@/components/Header";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation"; // Updated import for client-side navigation
 
 export default function RootLayout({
   children,
@@ -25,16 +23,17 @@ export default function RootLayout({
   const { isConnected, address } = useAccount();
   const { disconnect } = useDisconnect();
   const [tooltipVisible, setTooltipVisible] = useState(false);
+  const router = useRouter(); // Use useRouter for client-side navigation
 
   useEffect(() => {
     if (!isConnected) {
-      redirect(`/`);
+      router.push(`/`); // Use router.push for navigation
     }
-  }, [isConnected]);
+  }, [isConnected, router]);
 
   const handleDisconnect = () => {
     disconnect();
-    redirect(`/`);
+    router.push(`/`); // Use router.push for navigation
   };
 
   const links = [
@@ -52,7 +51,6 @@ export default function RootLayout({
         <IconArrowsExchange className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
       ),
     },
-
     {
       label: "Portfolio",
       href: "/user/portfolio",
@@ -60,7 +58,6 @@ export default function RootLayout({
         <IconCurrencyEthereum className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
       ),
     },
-
     {
       label: "Exchange",
       href: "/user/exchange",
@@ -91,11 +88,13 @@ export default function RootLayout({
   };
 
   return (
-    <div className="flex h-screen bg-gray-200">
+    <div className="flex h-screen bg-gray-200 dark:bg-gray-900">
+      {" "}
+      {/* Added dark mode support */}
       <Sidebar open={open} setOpen={setOpen}>
         <SidebarBody className="justify-between gap-10">
-          <div className="flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
-            <div className="text-black flex items-center space-x-2">
+          <div className="flex flex-col flex-1 overflow-y-auto overflow-x-hidden relative">
+            <div className="text-black dark:text-white flex items-center space-x-2">
               <span className="text-sm">
                 {isConnected ? truncateAddress(address || "") : "Not Connected"}
               </span>
@@ -103,7 +102,7 @@ export default function RootLayout({
                 onClick={copyToClipboard}
                 className="text-neutral-700 dark:text-neutral-200"
               >
-                <IconCopy className="h-4 w-4 text-gray-500" />
+                <IconCopy className="h-4 w-4" />
               </button>
               {tooltipVisible && (
                 <div className="absolute top-full mt-1 bg-black text-white p-1 rounded text-xs">
@@ -119,7 +118,6 @@ export default function RootLayout({
           </div>
         </SidebarBody>
       </Sidebar>
-
       <div className="flex-1 flex flex-col">
         <DashboardHeader />
         <main className="flex-1 p-6">{children}</main>

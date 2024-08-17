@@ -8,27 +8,31 @@ const DashboardHeader: React.FC = () => {
   const { isConnected } = useAccount();
 
   return (
-    <header className="w-full py-2 px-12 bg-white flex justify-between items-center">
+    <header className="w-full py-4 px-8 bg-white dark:bg-gray-900 flex justify-between items-center shadow-md">
       <div className="flex items-center">
         <Image
           src="/walletconnect.png"
-          width={20}
-          height={20}
-          className="mr-2"
+          width={24}
+          height={24}
+          className="mr-3"
           alt="logo"
         />
-        <div className="text-xl font-bold text-black">1Connect</div>
+        <div className="text-2xl font-bold text-gray-900 dark:text-white">
+          1Connect
+        </div>
       </div>
-      <ThemeToggle />
-      <div className="flex items-center gap-x-2">
-        {!isConnected ? (
-          <w3m-connect-button />
-        ) : (
-          <>
-            <w3m-network-button />
-            <w3m-account-button balance={"show"} />
-          </>
-        )}
+      <div className="flex items-center gap-x-4">
+        <ThemeToggle />
+        <div className="flex items-center gap-x-3">
+          {!isConnected ? (
+            <w3m-connect-button />
+          ) : (
+            <>
+              <w3m-network-button />
+              <w3m-account-button balance={"show"} />
+            </>
+          )}
+        </div>
       </div>
     </header>
   );

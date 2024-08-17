@@ -16,7 +16,7 @@ import { getMarketChartData } from "@/lib/api";
 function CustomTooltip({ payload, label, active, currency = "usd" }: any) {
   if (active && payload && payload.length > 0) {
     return (
-      <div className="bg-gray-800 text-white p-2 rounded shadow-md">
+      <div className="bg-gray-800 text-white p-2 rounded shadow-lg">
         <p className="text-sm">{`${label} : ${new Intl.NumberFormat("en-IN", {
           style: "currency",
           currency: currency,
@@ -25,7 +25,6 @@ function CustomTooltip({ payload, label, active, currency = "usd" }: any) {
       </div>
     );
   }
-
   return null;
 }
 
@@ -71,14 +70,14 @@ const Chart = ({ id }: any) => {
   }, [id, type, days]);
 
   return (
-    <div className="w-full h-[60%] bg-gray-900 p-4 rounded-lg shadow-lg">
+    <div className="w-full h-60 bg-gray-900 p-8 rounded-lg shadow-lg">
       <ChartComponent data={chartData} type={type} />
       <div className="flex flex-wrap gap-2 mt-4">
         <button
           className={`text-sm py-2 px-4 rounded-full transition-colors ${
             type === "prices"
-              ? "bg-cyan-600 text-white"
-              : "bg-gray-700 text-gray-300"
+              ? "bg-cyan-600 text-white dark:bg-cyan-500 dark:text-gray-900"
+              : "bg-gray-700 text-gray-300 dark:bg-gray-600 dark:text-gray-400"
           }`}
           onClick={() => setType("prices")}
         >
@@ -87,8 +86,8 @@ const Chart = ({ id }: any) => {
         <button
           className={`text-sm py-2 px-4 rounded-full transition-colors ${
             type === "market_caps"
-              ? "bg-cyan-600 text-white"
-              : "bg-gray-700 text-gray-300"
+              ? "bg-cyan-600 text-white dark:bg-cyan-500 dark:text-gray-900"
+              : "bg-gray-700 text-gray-300 dark:bg-gray-600 dark:text-gray-400"
           }`}
           onClick={() => setType("market_caps")}
         >
@@ -97,8 +96,8 @@ const Chart = ({ id }: any) => {
         <button
           className={`text-sm py-2 px-4 rounded-full transition-colors ${
             type === "total_volumes"
-              ? "bg-cyan-600 text-white"
-              : "bg-gray-700 text-gray-300"
+              ? "bg-cyan-600 text-white dark:bg-cyan-500 dark:text-gray-900"
+              : "bg-gray-700 text-gray-300 dark:bg-gray-600 dark:text-gray-400"
           }`}
           onClick={() => setType("total_volumes")}
         >
@@ -107,7 +106,9 @@ const Chart = ({ id }: any) => {
 
         <button
           className={`text-sm py-2 px-4 rounded-full transition-colors ${
-            days === 7 ? "bg-cyan-600 text-white" : "bg-gray-700 text-gray-300"
+            days === 7
+              ? "bg-cyan-600 text-white dark:bg-cyan-500 dark:text-gray-900"
+              : "bg-gray-700 text-gray-300 dark:bg-gray-600 dark:text-gray-400"
           }`}
           onClick={() => setDays(7)}
         >
@@ -115,7 +116,9 @@ const Chart = ({ id }: any) => {
         </button>
         <button
           className={`text-sm py-2 px-4 rounded-full transition-colors ${
-            days === 14 ? "bg-cyan-600 text-white" : "bg-gray-700 text-gray-300"
+            days === 14
+              ? "bg-cyan-600 text-white dark:bg-cyan-500 dark:text-gray-900"
+              : "bg-gray-700 text-gray-300 dark:bg-gray-600 dark:text-gray-400"
           }`}
           onClick={() => setDays(14)}
         >
@@ -123,7 +126,9 @@ const Chart = ({ id }: any) => {
         </button>
         <button
           className={`text-sm py-2 px-4 rounded-full transition-colors ${
-            days === 30 ? "bg-cyan-600 text-white" : "bg-gray-700 text-gray-300"
+            days === 30
+              ? "bg-cyan-600 text-white dark:bg-cyan-500 dark:text-gray-900"
+              : "bg-gray-700 text-gray-300 dark:bg-gray-600 dark:text-gray-400"
           }`}
           onClick={() => setDays(30)}
         >

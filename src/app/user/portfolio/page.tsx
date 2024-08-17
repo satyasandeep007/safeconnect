@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import { getSafeCollectibles, getSafeTokens } from "@/lib/api";
 import TokenCard from "@/components/TokenCard";
 
@@ -19,10 +18,21 @@ interface Token {
   fiatConversion: string;
 }
 
+interface NFT {
+  id: string;
+  name: string;
+  imageUri: string;
+  description?: string;
+}
+
 const PortfolioPage = () => {
   const [tokens, setTokens] = useState<Token[]>([]);
-  const [nfts, setNfts] = useState<any[]>([]);
+  const [nfts, setNfts] = useState<NFT[]>([]);
   const [activeTab, setActiveTab] = useState<"tokens" | "nfts">("tokens");
+  const [loadingTokens, setLoadingTokens] = useState<boolean>(true);
+  const [loadingNfts, setLoadingNfts] = useState<boolean>(true);
+  const [errorTokens, setErrorTokens] = useState<string | null>(null);
+  const [errorNfts, setErrorNfts] = useState<string | null>(null);
   const chainId = "11155111";
   const safeAddress = "0xE5D661626787d7aeAd7285e0aF6375E4CF3b77fb";
 
@@ -32,7 +42,9 @@ const PortfolioPage = () => {
         const data = await getSafeTokens(chainId, safeAddress);
         setTokens(data.items);
       } catch (error) {
-        console.error("Error fetching tokens:", error);
+        setErrorTokens("Error fetching tokens. Please try again later.");
+      } finally {
+        setLoadingTokens(false);
       }
     };
 
@@ -45,7 +57,9 @@ const PortfolioPage = () => {
         const data = await getSafeCollectibles(chainId, safeAddress);
         setNfts(data.results);
       } catch (error) {
-        console.error("Error fetching NFTs:", error);
+        setErrorNfts("Error fetching NFTs. Please try again later.");
+      } finally {
+        setLoadingNfts(false);
       }
     };
 
@@ -76,8 +90,11 @@ const PortfolioPage = () => {
       {activeTab === "tokens" ? (
         <div>
           <h2 className="text-2xl font-semibold mb-4">Tokens</h2>
-
-          {tokens.length === 0 ? (
+          {loadingTokens ? (
+            <div className="text-center text-gray-500">Loading tokens...</div>
+          ) : errorTokens ? (
+            <div className="text-center text-red-500">{errorTokens}</div>
+          ) : tokens.length === 0 ? (
             <div className="text-center text-gray-500">No tokens found</div>
           ) : (
             tokens.map((token, index) => (
@@ -88,16 +105,35 @@ const PortfolioPage = () => {
       ) : (
         <div>
           <h2 className="text-2xl font-semibold mb-4">NFTs</h2>
-
-          {nfts.length === 0 ? (
+          {loadingNfts ? (
+            <div className="text-center text-gray-500">Loading NFTs...</div>
+          ) : errorNfts ? (
+            <div className="text-center text-red-500">{errorNfts}</div>
+          ) : nfts.length === 0 ? (
             <div className="text-center text-gray-500">No NFTs found</div>
           ) : (
             nfts.map((nft, index) => (
               <div
                 key={index}
-                className="flex justify-between items-center bg-gray-50 p-2 rounded-lg mb-2"
+                className="flex items-center bg-gray-50 p-4 rounded-lg mb-2"
               >
-                <div className="text-lg font-semibold">NFT {index + 1}</div>
+                <div className="flex-shrink-0 mr-4">
+                  {/* <Image
+                    src={nft.imageUri}
+                    alt={nft.name}
+                    width={100}
+                    height={100}
+                    className="rounded-lg"
+                  /> */}
+                </div>
+                <div className="flex-1">
+                  <div className="text-lg font-semibold">{nft.name}</div>
+                  {nft.description && (
+                    <div className="text-sm text-gray-600">
+                      {nft.description}
+                    </div>
+                  )}
+                </div>
               </div>
             ))
           )}

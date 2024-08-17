@@ -1,4 +1,5 @@
 "use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -20,11 +21,11 @@ const Hero = ({ isConnected }: any) => {
           <div className="container items-center max-w-7xl px-8 mx-auto xl:px-5 flex h-full flex-col justify-center">
             <div className="flex flex-wrap items-center sm:-mx-3">
               <div className="w-full md:w-1/2 md:px-3">
-                <div className="w-full pb-6 space-y-6 font  sm:max-w-md lg:max-w-lg md:space-y-4 lg:space-y-8 xl:space-y-9 sm:pr-5 lg:pr-0 md:pb-0">
-                  <p className="w-[550px] text-6xl font-semibold text-left text-[#222] leading-snug">
+                <div className="w-full pb-6 space-y-6 font sm:max-w-md lg:max-w-lg md:space-y-4 lg:space-y-8 xl:space-y-9 sm:pr-5 lg:pr-0 md:pb-0">
+                  <p className="text-6xl font-semibold text-left text-gray-900 dark:text-white leading-snug">
                     Bridging Realities through Cryptocurrency
                   </p>
-                  <p className="mx-auto text-base text-gray-500 sm:max-w-md font-light lg:text-xl md:max-w-3xl">
+                  <p className="mx-auto text-base text-gray-500 dark:text-gray-300 sm:max-w-md font-light lg:text-xl md:max-w-3xl">
                     Unlock seamless token swapping, wallet management, and
                     crypto on-ramping with {""}
                   </p>
@@ -35,7 +36,7 @@ const Hero = ({ isConnected }: any) => {
                     ) : (
                       <Link
                         href="/user/dashboard"
-                        className="flex items-center w-full px-6 py-3 mb-3 text-lg text-white bg-black sm:mb-0 hover:bg-orange-600 sm:w-auto"
+                        className="flex items-center w-full px-6 py-3 mb-3 text-lg text-white bg-black rounded-lg hover:bg-orange-600 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700 sm:mb-0 sm:w-auto transition duration-300"
                       >
                         Get Started
                         <svg
@@ -69,48 +70,47 @@ const Hero = ({ isConnected }: any) => {
                           fill="#222222"
                         />
                       </svg>
-                      <p className="opacity-60 text-normal font-light text-left text-[#222]">
+                      <p className="opacity-60 text-normal font-light text-gray-900 dark:text-gray-300">
                         Watch Video
                       </p>
                     </div>
-                    
                   </div>
-                  <div className="w-[534px] h-[69px] flex gap-10 pt-10">
-                    <div className="w-[156px] h-[69px] flex flex-col-reverse">
-                      <p className=" opacity-70 text-lg text-left text-[#222]">
+                  <div className="w-full flex gap-10 pt-10 flex-wrap md:justify-start">
+                    <div className="w-1/3 md:w-auto h-[69px] flex flex-col-reverse">
+                      <p className="opacity-70 text-lg text-gray-900 dark:text-gray-300">
                         Cryptocurrencies
                       </p>
-                      <p className=" text-[40px] font-bold text-left">
-                        <span className="text-[40px] font-bold text-left text-[#222]">
+                      <p className="text-[40px] font-bold text-gray-900 dark:text-gray-200">
+                        <span className="text-[#222] dark:text-gray-300">
                           650
                         </span>
-                        <span className="text-[40px] font-bold text-left text-[#4eb680]">
+                        <span className="text-[#4eb680] dark:text-green-400">
                           +
                         </span>
                       </p>
                     </div>
-                    <div className="w-[125px] h-[69px]  flex flex-col-reverse">
-                      <p className=" opacity-70 text-lg text-left text-[#222]">
+                    <div className="w-1/3 md:w-auto h-[69px] flex flex-col-reverse">
+                      <p className="opacity-70 text-lg text-gray-900 dark:text-gray-300">
                         Global Users
                       </p>
-                      <p className="text-[40px] font-bold text-left  ">
-                        <span className="text-[40px] font-bold text-left text-[#222]">
+                      <p className="text-[40px] font-bold text-gray-900 dark:text-gray-200">
+                        <span className="text-[#222] dark:text-gray-300">
                           500K
                         </span>
-                        <span className="text-[40px] font-bold text-left text-[#4eb680]">
+                        <span className="text-[#4eb680] dark:text-green-400">
                           +
                         </span>
                       </p>
                     </div>
-                    <div className="w-[161px] h-[69px] flex flex-col-reverse">
-                      <p className="opacity-70 text-lg text-left text-[#222]">
+                    <div className="w-1/3 md:w-auto h-[69px] flex flex-col-reverse">
+                      <p className="opacity-70 text-lg text-gray-900 dark:text-gray-300">
                         Crypto Workshops
                       </p>
-                      <p className=" text-[40px] font-bold text-left">
-                        <span className="text-[40px] font-bold text-left text-[#222]">
+                      <p className="text-[40px] font-bold text-gray-900 dark:text-gray-200">
+                        <span className="text-[#222] dark:text-gray-300">
                           1000
                         </span>
-                        <span className="text-[40px] font-bold text-left text-[#4eb680]">
+                        <span className="text-[#4eb680] dark:text-green-400">
                           +
                         </span>
                       </p>

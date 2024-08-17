@@ -16,21 +16,21 @@ const TransactionCard = ({
     <div>
       <div
         key={index}
-        className="bg-white border border-gray-200 rounded-lg shadow-sm"
+        className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-sm"
       >
         <div
           className="flex justify-between items-center p-4 cursor-pointer"
           onClick={() => toggleTransaction(index)}
         >
           <div className="flex items-center space-x-2">
-            <span className="text-sm font-semibold">
+            <span className="text-sm font-semibold text-gray-900 dark:text-gray-100">
               {isTransfer
                 ? "Transfer"
                 : isCreation
                 ? "Safe Account Created"
                 : "Unknown"}
             </span>
-            <span className="text-gray-500">
+            <span className="text-gray-500 dark:text-gray-400">
               {isTransfer
                 ? `From ${tx?.transaction?.txInfo?.sender?.value?.slice(
                     0,
@@ -45,7 +45,7 @@ const TransactionCard = ({
             </span>
           </div>
           <div className="flex items-center space-x-2">
-            <span className="text-gray-500 text-sm">
+            <span className="text-gray-500 dark:text-gray-400 text-sm">
               {new Date(tx?.transaction?.timestamp).toLocaleTimeString()}
             </span>
             <span
@@ -58,41 +58,49 @@ const TransactionCard = ({
               {tx?.transaction?.txStatus}
             </span>
             {openTransaction === index ? (
-              <IconChevronUp className="h-4 w-4 text-gray-500" />
+              <IconChevronUp className="h-4 w-4 text-gray-500 dark:text-gray-400" />
             ) : (
-              <IconChevronDown className="h-4 w-4 text-gray-500" />
+              <IconChevronDown className="h-4 w-4 text-gray-500 dark:text-gray-400" />
             )}
           </div>
         </div>
 
         {/* Toggleable detailed view */}
         {openTransaction === index && (
-          <div className="bg-gray-50 p-4 space-y-4">
+          <div className="bg-gray-50 dark:bg-gray-900 p-4 space-y-4">
             {isTransfer && (
               <>
                 <div>
-                  <div className="text-sm font-semibold">Sender:</div>
-                  <div className="text-sm text-gray-600">
+                  <div className="text-sm font-semibold text-gray-900 dark:text-gray-100">
+                    Sender:
+                  </div>
+                  <div className="text-sm text-gray-600 dark:text-gray-400">
                     {tx?.transaction?.txInfo?.sender?.value}
                   </div>
                 </div>
                 <div>
-                  <div className="text-sm font-semibold">Recipient:</div>
-                  <div className="text-sm text-gray-600">
+                  <div className="text-sm font-semibold text-gray-900 dark:text-gray-100">
+                    Recipient:
+                  </div>
+                  <div className="text-sm text-gray-600 dark:text-gray-400">
                     {tx?.transaction?.txInfo?.recipient?.value}
                   </div>
                 </div>
                 <div>
-                  <div className="text-sm font-semibold">Amount:</div>
-                  <div className="text-sm text-gray-600">
+                  <div className="text-sm font-semibold text-gray-900 dark:text-gray-100">
+                    Amount:
+                  </div>
+                  <div className="text-sm text-gray-600 dark:text-gray-400">
                     {parseFloat(tx?.transaction?.txInfo?.transferInfo?.value) /
                       1e18}{" "}
                     ETH
                   </div>
                 </div>
                 <div>
-                  <div className="text-sm font-semibold">Transaction hash:</div>
-                  <div className="text-sm text-gray-600">
+                  <div className="text-sm font-semibold text-gray-900 dark:text-gray-100">
+                    Transaction hash:
+                  </div>
+                  <div className="text-sm text-gray-600 dark:text-gray-400">
                     {tx.transaction.txHash}
                   </div>
                 </div>
@@ -101,28 +109,36 @@ const TransactionCard = ({
             {isCreation && (
               <>
                 <div>
-                  <div className="text-sm font-semibold">Creator:</div>
-                  <div className="text-sm text-gray-600">
+                  <div className="text-sm font-semibold text-gray-900 dark:text-gray-100">
+                    Creator:
+                  </div>
+                  <div className="text-sm text-gray-600 dark:text-gray-400">
                     {tx?.transaction?.txInfo?.creator?.value}
                   </div>
                 </div>
                 <div>
-                  <div className="text-sm font-semibold">Factory:</div>
-                  <div className="text-sm text-gray-600">
+                  <div className="text-sm font-semibold text-gray-900 dark:text-gray-100">
+                    Factory:
+                  </div>
+                  <div className="text-sm text-gray-600 dark:text-gray-400">
                     {tx?.transaction?.txInfo?.factory?.name} -{" "}
                     {tx?.transaction?.txInfo?.factory?.value}
                   </div>
                 </div>
                 <div>
-                  <div className="text-sm font-semibold">Mastercopy:</div>
-                  <div className="text-sm text-gray-600">
+                  <div className="text-sm font-semibold text-gray-900 dark:text-gray-100">
+                    Mastercopy:
+                  </div>
+                  <div className="text-sm text-gray-600 dark:text-gray-400">
                     {tx?.transaction?.txInfo?.implementation?.name} -{" "}
                     {tx?.transaction?.txInfo?.implementation?.value}
                   </div>
                 </div>
                 <div>
-                  <div className="text-sm font-semibold">Transaction hash:</div>
-                  <div className="text-sm text-gray-600">
+                  <div className="text-sm font-semibold text-gray-900 dark:text-gray-100">
+                    Transaction hash:
+                  </div>
+                  <div className="text-sm text-gray-600 dark:text-gray-400">
                     {tx.transaction.txHash}
                   </div>
                 </div>

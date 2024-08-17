@@ -1,3 +1,4 @@
+// components/Buttons.tsx
 "use client";
 import { cn } from "@/lib/utils";
 import React, { ReactNode } from "react";
@@ -14,7 +15,7 @@ export const AnimatedButton = ({
   return (
     <button
       className={cn(
-        "px-4 py-2 rounded-md text-black dark:text-white text-center relative overflow-hidden",
+        "px-4 py-2 rounded-md text-black dark:text-white text-center relative overflow-hidden transition-colors duration-300 ease-in-out",
         className
       )}
       onClick={() => onClick()}
@@ -34,13 +35,13 @@ export const CustomButton = ({
   onClick?: any;
 }) => {
   const baseStyle =
-    "px-4 py-2 font-bold text-white rounded-lg transition-all duration-300 ease-in-out transform hover:-translate-y-1 active:translate-y-0 focus:outline-none";
+    "px-4 py-2 font-bold rounded-lg transition-all duration-300 ease-in-out transform hover:-translate-y-1 active:translate-y-0 focus:outline-none";
 
   return (
     <button
       className={cn(
         baseStyle,
-        "px-4 py-2 rounded-md text-black dark:text-white text-center relative overflow-hidden",
+        "text-black dark:text-white bg-gray-200 dark:bg-gray-800 border border-transparent",
         className
       )}
       onClick={() => onClick()}
@@ -62,8 +63,9 @@ export const SolidButton = ({
   return (
     <button
       className={cn(
-        "w-40 h-10 rounded-xl bg-black border  border-transparent text-white text-sm",
-        className
+        "w-40 h-10 rounded-xl bg-black text-white border border-transparent text-sm transition-colors duration-300 ease-in-out",
+        className,
+        "hover:bg-gray-800 dark:hover:bg-gray-700"
       )}
       onClick={() => onClick()}
     >
@@ -84,7 +86,8 @@ export const OutlineButton = ({
   return (
     <button
       className={cn(
-        "w-40 h-10 rounded-xl bg-white text-black border border-black  text-sm",
+        "w-40 h-10 rounded-xl border text-sm transition-colors duration-300 ease-in-out",
+        "bg-white text-black border-black dark:bg-gray-800 dark:text-white dark:border-white",
         className
       )}
       onClick={() => onClick()}
