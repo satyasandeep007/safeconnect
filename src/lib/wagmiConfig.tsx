@@ -9,9 +9,10 @@ export const projectId = process.env.NEXT_PUBLIC_PROJECT_ID;
 if (!projectId) throw new Error("Project ID is not defined");
 
 export const metadata = {
-  name: "AppKit",
-  description: "AppKit Example",
-  url: "https://web3modal.com", // origin must match your domain & subdomain
+  name: "Safe Connect",
+  description:
+    "Your Secure Gateway to Seamless Crypto Management Across All Chains** 🚀🔐",
+  url: "https://safeconnect.vercel.app",
   icons: ["https://avatars.githubusercontent.com/u/37784886"],
 };
 
@@ -26,10 +27,8 @@ export const config = defaultWagmiConfig({
     storage: cookieStorage,
   }),
   auth: {
-    email: true, // default to true
+    email: true,
     socials: ["github", "google"],
-    // showWallets: false, // default to true
-    walletFeatures: false, // default to true
-    
+    walletFeatures: false,
   },
 });

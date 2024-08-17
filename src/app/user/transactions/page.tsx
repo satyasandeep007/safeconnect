@@ -27,7 +27,7 @@ const Transactions = () => {
   const [openTransaction, setOpenTransaction] = useState<number | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-  const { isConnected, address, chainId }: any = useAccount();
+  const { address, chainId }: any = useAccount();
 
   useEffect(() => {
     const fetchTransactions = async () => {
