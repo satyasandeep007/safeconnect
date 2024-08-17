@@ -10,7 +10,7 @@
 
 ### Landing Page
 
-![Home](public/Home.png)
+![Home](public/HomeNew.png)
 
 ### Dashboard Page
 
@@ -18,7 +18,7 @@
 
 ### Exchange Page
 
-![Exchange](public/Exchange.png)
+![Exchange](public/ExchangeNew.png)
 
 <br>
 
