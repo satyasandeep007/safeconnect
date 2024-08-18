@@ -25,7 +25,7 @@
 ## 🚀 Get Started
 
 **GitHub Repo**: [Repo Link](https://github.com/satyasandeep007/safeconnect)  
-**YouTube Video**: [Demo Video](https://www.youtube.com)
+**YouTube Video**: [Demo Video](https://www.youtube.com/watch?v=LvmcrmBSHBc)
 
 ## 🛠️ Stack We Used
 
